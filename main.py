@@ -1,9 +1,5 @@
 # -*- coding: utf-8 -*-
-"""
-Created on Thu Jul 13 12:14:55 2017
 
-@author: richard
-"""
 
 from sklearn.externals import joblib
 from flask import Flask, abort, request, jsonify, make_response
