@@ -11,6 +11,9 @@ A simple Flask application that implements a regression model to predict house v
 pip install -r requirements.txt
 ```
 
+# Model
+At the selection stage, a few different regression models are tested. At the improvement stage, the best model (gradient boosting regression) is further tuned to build the final regression model, which is written to file.
+
 # Endpoints
 ### /predict (POST)
 When given a JSON object representing independent variables, the program returns a JSON object representing the predicted house value and the standard deviation of the estimate. Example request (assuming that the server is running on port 5000 on localhost):
