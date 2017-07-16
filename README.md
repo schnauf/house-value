@@ -1,5 +1,5 @@
 # Flask API for scikit learn
-A simple Flask application that implements a regression model to predict house values based on training data. Reads a pickled sklearn model into memory when the Flask app is started and returns predictions through the /predict endpoint. Any sklearn model can be used for prediction.
+A simple Flask application that implements a regression model to predict house values based on training data.  Reads a pickled sklearn model into memory when the Flask app is started and returns predictions through the /predict endpoint. Any sklearn model can be used for prediction.
 
 ### Dependencies
 - scikit-learn
