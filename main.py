@@ -39,8 +39,8 @@ def predict():
         abort(400)
     
     # Format response and return it
-    response = {'house_value': '{:0.1f}'.format(house_value), 
-                'stddev': '{:0.1f}'.format(stddev)}
+    response = {'house_value': round(house_value, 1), 
+                'stddev': round(stddev, 1)}
     return jsonify(response)
 
 # Retun 400 Bad request error if required parameters are missing
