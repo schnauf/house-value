@@ -29,7 +29,7 @@ and sample output:
 ```
 
 {
-  "house_value": "18.8", 
-  "stddev": "3.9"
+  "house_value": 18.8, 
+  "stddev": 3.9
 }
 ```
