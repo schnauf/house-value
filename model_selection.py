@@ -1,10 +1,5 @@
-#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
-"""
-Created on Sat Jul 15 14:16:19 2017
 
-@author: richard
-"""
 
 import pandas as pd
 from sklearn.utils import shuffle
