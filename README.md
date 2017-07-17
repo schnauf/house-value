@@ -28,7 +28,7 @@ curl http://localhost:5000/predict -H "Content-Type: application/json" --data-bi
 }'
 ```
 
-and sample output:
+and sample output (precise values will depend on the regression model):
 ```
 
 {
