@@ -1,6 +1,3 @@
-# -*- coding: utf-8 -*-
-
-
 import pandas as pd
 from sklearn.utils import shuffle
 from sklearn.linear_model import LinearRegression, Ridge
@@ -11,33 +8,31 @@ from sklearn.ensemble import RandomForestRegressor, GradientBoostingRegressor
 from sklearn.model_selection import cross_val_score
 
 # Location of the training data
-data_directory = 'data'
-data_file = '{}/housing.csv'.format(data_directory)
+DATA_DIRECTORY = "data"
+DATA_FILE = f"{DATA_DIRECTORY}/housing.csv"
 
 # Read dataset and split it into dependent variables (x) and target (y)
-housing = pd.read_csv(data_file)
-x, y = shuffle(housing.iloc[:,:-1], housing.iloc[:,-1])
+housing = pd.read_csv(DATA_FILE)
+x, y = shuffle(housing.iloc[:, :-1], housing.iloc[:, -1])
 
 # Try a few models in different categories (linear, support vector machine,
 # nearest neighbor regression, decision tree regression, ensemble methods)
 models = [LinearRegression(), Ridge(), SVR(), KNeighborsRegressor(),
-          DecisionTreeRegressor(), RandomForestRegressor(), 
-          GradientBoostingRegressor()
-          ]
+          DecisionTreeRegressor(), RandomForestRegressor(),
+          GradientBoostingRegressor()]
 
 
-tmp = []
+# Calculate 10 fold cross validation scores of the models
+results = []
 for model in models:
-    # Get name of the model as a string
-    name = str(model)
-    name = name[:name.index('(')]
-    # Calculate 10 fold cross validation scores
-    scores = cross_val_score(model, x, y, cv = 10, scoring = 'r2')
-    # Write data
-    tmp.append({'Model_name': name, 'R^2_score': scores.mean()})
+    NAME = type(model).__name__
+    scores = cross_val_score(model, x, y, cv=10, scoring='r2')
+    results.append({"model_name": NAME, "mean_test_score": scores.mean()})
 
-TestModels = pd.DataFrame(tmp)
+# Put results into a dataframe and sort by R^2 score
+model_scores = pd.DataFrame(results)
+model_scores.sort_values(by="mean_test_score", ascending=False, inplace=True)
 
-# Print results sorted from best to worse
-print 'Results of 10 fold cross validation (from best to worst):'
-print TestModels.sort_values(by = 'R^2_score', ascending = False)
+# Print results sorted from best to worst
+print("Results of 10 fold cross validation (from best to worst):\n")
+print(model_scores.to_string(index=False))
